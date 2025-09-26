@@ -1,8 +1,8 @@
 # Bookstore AI Chatbot 📚
 
-Một chatbot AI thông minh được xây dựng bằng Streamlit và Google Gemini, giúp người dùng dễ dàng tra cứu thông tin sách và đặt hàng trực tiếp thông qua giao diện trò chuyện tự nhiên.
+An intelligent AI chatbot built with Streamlit and Google Gemini, enabling users to easily search for book information and place orders directly through a natural conversation interface.
 
-🚀 Link Dùng Thử Trực Tiếp: [Bookstore Chatbot Demo](https://bookstore-chatbot-7ouvbm8cm7pzrdbgejc5ee.streamlit.app/)
+🚀  Live Demo Link: [Bookstore Chatbot Demo](https://bookstore-chatbot-7ouvbm8cm7pzrdbgejc5ee.streamlit.app/)
 
 
 ## Features
@@ -14,7 +14,7 @@ Một chatbot AI thông minh được xây dựng bằng Streamlit và Google Ge
 
 ## Tech Stack
 - Language: Python
-- AI Model: Google Gemini 1.5 Flash
+- AI Model: Google Gemini 2.0 Flash
 - Framework: Streamlit
 - Database: SQLite
 - Core Technique: Function Calling / Tool Use
