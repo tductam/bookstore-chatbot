@@ -1,6 +1,9 @@
-# Bookstore Chatbot
+# Bookstore AI Chatbot 📚
 
-A Streamlit-based chatbot application that allows users to search for books and place orders using Google Gemini API (`gemini-2.0-flash-lite-001`) for natural language processing and SQLite for database management.
+Một chatbot AI thông minh được xây dựng bằng Streamlit và Google Gemini, giúp người dùng dễ dàng tra cứu thông tin sách và đặt hàng trực tiếp thông qua giao diện trò chuyện tự nhiên.
+
+🚀 Link Dùng Thử Trực Tiếp: [Bookstore Chatbot Demo](https://bookstore-chatbot-7ouvbm8cm7pzrdbgejc5ee.streamlit.app/)
+
 
 ## Features
 - **Search Books**: Users can search for books by title or author, retrieving details such as title, author, price, stock, and category.
@@ -10,11 +13,24 @@ A Streamlit-based chatbot application that allows users to search for books and 
 - **SQLite Database**: Stores book inventory and order details.
 
 ## Tech Stack
-- **Python**: Core programming language.
-- **Streamlit**: Web framework for the user interface.
-- **Google Gemini API**: For natural language processing and function calling (`google-generativeai==0.8.5`).
-- **SQLite**: Lightweight database for storing books and orders.
-- **Proto-plus**: Dependency for Gemini API (`proto-plus==1.26.1`).
+- Language: Python
+- AI Model: Google Gemini 1.5 Flash
+- Framework: Streamlit
+- Database: SQLite
+- Core Technique: Function Calling / Tool Use
+
+## Approach & Design
+This project leverages the powerful Function Calling capability of the Gemini model to create a reliable and intelligent chatbot.
+
+System Flow:
+- User Input: The user sends a message through the Streamlit interface.
+- LLM Analysis: The Gemini model receives the user's message and the list of available tools (search_book, create_order).
+- Tool Selection: The model determines whether the user's intent is to search for a book or create an order. If so, it identifies the correct function to call and extracts the necessary arguments (e.g., book title, customer name).
+- Function Execution: The Python backend executes the chosen function (db_handler.py), which interacts with the SQLite database.
+- Response Generation: The result from the function (e.g., book data or order confirmation) is sent back to the Gemini model.
+- Final Answer: The model synthesizes the function's result into a natural, human-friendly response to be displayed to the user.
+
+This tool-based approach is superior to simple text generation as it grounds the chatbot's responses in real data from the database, ensuring accuracy and reliability.
 
 ## Prerequisites
 - Python 3.8+
@@ -46,7 +62,7 @@ A Streamlit-based chatbot application that allows users to search for books and 
      mkdir .streamlit
      echo "GOOGLE_API_KEY = \"your-api-key-here\"" > .streamlit/secrets.toml
      ```
-   - Replace `your-api-key-here` with your actual Google API key.
+   - Replace `your-api-key-here` with your actual key.
 
 5. **Initialize the database**:
    ```bash
@@ -65,12 +81,12 @@ A Streamlit-based chatbot application that allows users to search for books and 
      - "Mua 1 cuốn Nhà Giả Kim, tên A, sdt 0123456789, địa chỉ Hà Nội" → Creates an order.
 
 2. **Expected outputs**:
-   - Search: "Sách: Đắc Nhân Tâm, Tác giả: Dale Carnegie, Giá: 120000.0 VND, Tồn kho: 48, Thể loại: Kỹ năng sống"
+   - Search: "Sách: Đắc Nhân Tâm, Tác giả: Dale Carnegie, Giá: 120000.0 VND, Tồn kho: 50, Thể loại: Kỹ năng sống"
    - Order: "Đã tạo đơn hàng thành công với mã #X cho sách 'Nhà Giả Kim'. Cảm ơn bạn!"
 
 ## Deployment
 To deploy the application on Streamlit Cloud:
-1. Push the code to a GitHub repository (see instructions below).
+1. Push the code to a GitHub repository.
 2. Log in to [Streamlit Cloud](https://streamlit.io/cloud).
 3. Create a new app, select your GitHub repository, and specify `app.py` as the main file.
 4. Add `GOOGLE_API_KEY` to the app's Secrets in Streamlit Cloud:
